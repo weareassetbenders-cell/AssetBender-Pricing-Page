@@ -32,7 +32,7 @@ export default function App() {
                 animate={{ opacity: 1, y: 0 }}
                 className="text-6xl md:text-8xl font-display font-black tracking-tighter mb-8 leading-[0.9]"
               >
-                <span className="text-gradient">today</span>
+                Start saving time <span className="text-gradient">today</span>
               </motion.h1>
 
               <motion.p
@@ -41,7 +41,9 @@ export default function App() {
                 transition={{ delay: 0.1 }}
                 className="text-xl md:text-2xl text-brand-muted max-w-2xl mx-auto mb-12 font-medium leading-relaxed"
               >
-                Get started on our free tester and upgrade when you are ready.
+                <span className="text-white font-semibold">Get started on our free tester</span>
+                <br />
+                and upgrade when you are ready.
               </motion.p>
 
               <motion.div
@@ -57,7 +59,46 @@ export default function App() {
 
           {/* Pricing Grid */}
           <section className="px-6 pb-32 relative">
-            <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch">
+            <div className="max-w-6xl mx-auto text-center mb-12">
+              <motion.span
+                initial={{ opacity: 0, scale: 0.9 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                animate={{
+                  y: [0, -10, 0],
+                  rotate: [0, -2, 2, -2, 2, 0],
+                }}
+                transition={{
+                  y: {
+                    duration: 4,
+                    repeat: Infinity,
+                    ease: "easeInOut"
+                  },
+                  rotate: {
+                    duration: 0.4,
+                    repeat: Infinity,
+                    repeatDelay: 3,
+                  }
+                }}
+                className="bg-brand-primary/10 text-brand-primary px-6 py-2 rounded-full text-sm font-black uppercase tracking-[0.2em] border border-brand-primary/20 inline-block shadow-lg shadow-brand-primary/5"
+              >
+                Limited Time Offer!
+              </motion.span>
+            </div>
+            <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 items-stretch">
+              <PricingCard
+                title="FREE"
+                price="$0"
+                period="/mo"
+                features={[
+                  "Assetbender Product Manager App",
+                  "Motion Bender Plug-in",
+                  "Limited customizable assets (MOGRT, transitions, SFX)",
+                  "Community membership"
+                ]}
+                buttonText="Try Now"
+              />
+
               <PricingCard
                 title="Monthly"
                 price="$19.99"
@@ -84,7 +125,7 @@ export default function App() {
               />
 
               <PricingCard
-                title="Early"
+                title="Yearly"
                 price="$9.99"
                 originalPrice="$34.90"
                 period="/mo"
